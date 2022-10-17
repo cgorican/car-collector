@@ -39,23 +39,31 @@ class MainActivity : AppCompatActivity() {
             val carMileage: EditText = findViewById(R.id.inputCarMileage)
             val carPrice: EditText = findViewById(R.id.inputCarPrice)
 
-            var newCar = Car(
-                carMake.text.toString(),
-                carModel.text.toString(),
-                Year.of(carYear.text.toString().toInt()),
-                carPower.text.toString().toUInt(),
-                carMileage.text.toString().toUInt(),
-                carPrice.text.toString().toBigDecimal()
-            )
+            if(!carMake.text.toString().trim().isEmpty() &&
+                !carModel.text.toString().trim().isEmpty() &&
+                !carYear.text.toString().trim().isEmpty() &&
+                !carPower.text.toString().trim().isEmpty() &&
+                !carMileage.text.toString().trim().isEmpty() &&
+                !carPrice.text.toString().trim().isEmpty()) {
 
-            carCollection.cars.add(newCar)
+                val newCar: Car = Car(
+                    carMake.text.toString(),
+                    carModel.text.toString(),
+                    Year.of(carYear.text.toString().toInt()),
+                    carPower.text.toString().toUInt(),
+                    carMileage.text.toString().toUInt(),
+                    carPrice.text.toString().toBigDecimal()
+                )
 
-            carMake.setText("")
-            carModel.setText("")
-            carYear.setText("")
-            carPower.setText("")
-            carMileage.setText("")
-            carPrice.setText("")
+                carCollection.add(newCar)
+
+                carMake.setText("")
+                carModel.setText("")
+                carYear.setText("")
+                carPower.setText("")
+                carMileage.setText("")
+                carPrice.setText("")
+            }
         }
 
 

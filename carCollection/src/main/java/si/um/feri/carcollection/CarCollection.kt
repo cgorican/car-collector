@@ -41,6 +41,11 @@ class CarCollection(
         }
     }
 
+    fun add(x: Car) {
+        cars.add(x)
+        this.order()
+    }
+
     fun order() {
         this.cars = this.cars.sortedWith(compareBy({ it.make }, { it.model })).toMutableList()
     }

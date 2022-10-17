@@ -1,28 +1,23 @@
 package si.um.feri.carcollection
 
+import java.math.BigDecimal
 import java.time.Year
 import java.util.*
 
 class Car(
-    val manufacturer: String,     // Porsche
-    val model: String,            // 964 Turbo
-    val yearOfProduction: Year,   // 1990
+    val make: String,       // Porsche
+    val model: String,      // 964 Turbo
+    val year: Year,         // 1990
 
-    var power: UInt,              // 360 hp
-    var mileage: UInt,            // 43.812 km
-    val bodyType: BodyTypeEnum,   // Coupe
-    val fuelType: FuelTypeEnum,   // Gas
-    var color: String,
-
-    var licensePlate: String,     // MBPG850
-    var insurance: Insurance?,
-    var tyres: Tyres?,
+    var power: UInt,        // 360 hp
+    var mileage: UInt,      // 43.812 km
+    var price: BigDecimal   // 154.000 €
 ) : Comparable<Car> {
     val id: UUID = UUID.randomUUID()
 
     init {
-        if(this.yearOfProduction.value < 1886 ||
-            this.yearOfProduction.value > Year.now().value) {
+        if(this.year.value < 1886 ||
+            this.year.value > Year.now().value) {
             throw IllegalStateException("Invalid year of production.")
         }
     }
@@ -33,11 +28,13 @@ class Car(
 
         score += this.power.toInt()
         score -= this.mileage.toInt()
-        score += this.yearOfProduction.value
+        score += this.year.value
+        score += this.price.toInt()
 
         scoreOther += other.power.toInt()
         scoreOther -= other.mileage.toInt()
-        scoreOther += other.yearOfProduction.value
+        scoreOther += other.year.value
+        scoreOther += other.price.toInt()
 
         if(scoreOther > score)  {
             return 1
@@ -47,23 +44,13 @@ class Car(
 
     override fun toString(): String {
         var result = String.format("%s %s, %d",
-            manufacturer,
+            make,
             model,
-            yearOfProduction.value)
+            year.value)
 
         result += String.format("\n%-10s %-10d hp", "Power:", power.toInt())
         result += String.format("\n%-10s %-10d km", "Mileage:", mileage.toInt())
-        result += String.format("\n%-10s %-10s", "Body type:", bodyType)
-        result += String.format("\n%-10s %-10s", "Fuel:", fuelType)
-        result += String.format("\n%-10s %-10s", "Color:", color)
-        result += String.format("\n%-10s %-10s", "License:", licensePlate)
-
-        if(insurance != null) {
-            result += "\n${insurance.toString()}"
-        }
-        if(tyres != null) {
-            result += "\n${tyres.toString()}"
-        }
+        result += String.format("\n%-10s %-8.2f €", "Price:", price.setScale(2).toDouble())
 
         return result
     }

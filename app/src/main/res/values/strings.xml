@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">CarCollector</string>
+
+    <string name="car_make">Make</string>
+    <string name="car_model">Model</string>
+    <string name="car_year_of_production">Year</string>
+    <string name="car_horsepower">Power (hp)</string>
+    <string name="car_mileage">Mileage (km)</string>
+    <string name="car_price">Price (€)</string>
+
+    <string name="car_make_hint">Porsche</string>
+    <string name="car_model_hint">964 Turbo</string>
+    <string name="car_year_of_production_hint">1990</string>
+    <string name="car_horsepower_hint">360</string>
+    <string name="car_mileage_hint">11020</string>
+    <string name="car_price_hint">154000</string>
+
+    <string name="btn_add_car">Add</string>
+    <string name="btn_info">Info</string>
+    <string name="btn_exit">Exit</string>
+
+    <string name="logo_desc">App logo</string>
 </resources>

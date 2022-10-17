@@ -4,14 +4,16 @@ import io.github.serpro69.kfaker.Faker
 import java.time.Year
 import java.util.*
 
-class CarCollection {
+class CarCollection(
+    var owner: Person?
+) {
     val id: UUID = UUID.randomUUID()
     var cars: MutableList<Car> = mutableListOf()
 
     companion object {
         @JvmStatic
         fun generate(n: Int): CarCollection {
-            val result = CarCollection()
+            val result = CarCollection(null)
 
             // Random
             val faker = Faker()
@@ -27,12 +29,8 @@ class CarCollection {
                     Year.of((1964..2022).random()),
                     (80..840).random().toUInt(),
                     (0..735301).random().toUInt(),
-                    BodyTypeEnum.values()[(0..BodyTypeEnum.values().size-1).random()],
-                    FuelTypeEnum.values()[(0..FuelTypeEnum.values().size-1).random()],
-                    faker.vehicle.colors(),
-                    faker.vehicle.licensePlate(),
-                    null,
-                    null)
+                    (13829..73301).random().toBigDecimal()
+                )
 
                 result.cars.add(tmpCar)
             }
@@ -44,12 +42,13 @@ class CarCollection {
     }
 
     fun order() {
-        this.cars = this.cars.sortedWith(compareBy({ it.manufacturer }, { it.model })).toMutableList()
+        this.cars = this.cars.sortedWith(compareBy({ it.make }, { it.model })).toMutableList()
     }
 
     fun print() {
+        println("Owner: ${owner.toString()}\nCars:")
         for(car in cars) {
-            println("${car.toString()}\n")
+            println("${car}\n")
         }
     }
 }

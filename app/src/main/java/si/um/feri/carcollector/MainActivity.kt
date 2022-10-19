@@ -3,70 +3,98 @@ package si.um.feri.carcollector
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
+import android.view.View
+import android.widget.Toast
 import si.um.feri.carcollection.*
+import si.um.feri.carcollector.databinding.ActivityMainBinding
+import java.math.BigDecimal
 import java.time.Year
 
 class MainActivity : AppCompatActivity() {
-    lateinit var closeAppBtn: Button
-    lateinit var infoBtn: Button
-    lateinit var addCarBtn: Button
     private var carCollection = CarCollection(null)
+    private lateinit var binding: ActivityMainBinding
+    private val TAG = MainActivity::class.qualifiedName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        closeAppBtn  = findViewById(R.id.closeAppBtn1)
-        infoBtn = findViewById(R.id.infoBtn1)
-        addCarBtn = findViewById(R.id.addCarBtn)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        closeAppBtn.setOnClickListener {
+
+        binding.closeAppBtn1.setOnClickListener {
             this.finish()
             System.exit(0)
         }
 
-        infoBtn.setOnClickListener {
-            Log.i("Amount of cars in the list", carCollection.cars.size.toString())
+        binding.infoBtn1.setOnClickListener {
+            logInfo(binding.infoBtn1)
         }
 
-        addCarBtn.setOnClickListener {
-            val carMake: EditText = findViewById(R.id.inputCarMake)
-            val carModel: EditText = findViewById(R.id.inputCarModel)
-            val carYear: EditText = findViewById(R.id.inputCarYearOfProduction)
-            val carPower: EditText = findViewById(R.id.inputCarPower)
-            val carMileage: EditText = findViewById(R.id.inputCarMileage)
-            val carPrice: EditText = findViewById(R.id.inputCarPrice)
+        binding.addCarBtn.setOnClickListener {
+            addNewCar(binding.addCarBtn)
+        }
+    }
 
-            if(!carMake.text.toString().trim().isEmpty() &&
-                !carModel.text.toString().trim().isEmpty() &&
-                !carYear.text.toString().trim().isEmpty() &&
-                !carPower.text.toString().trim().isEmpty() &&
-                !carMileage.text.toString().trim().isEmpty() &&
-                !carPrice.text.toString().trim().isEmpty()) {
+    fun logInfo(view: View) {
+        when(carCollection.cars.size) {
+            0 -> Log.i(TAG, "There is no cars in the list.")
+            1 -> Log.i(TAG, "There is ${carCollection.cars.size} car in the list.")
+            else -> Log.i(TAG, "There are ${carCollection.cars.size} cars in the list.")
+        }
+    }
 
-                val newCar: Car = Car(
-                    carMake.text.toString(),
-                    carModel.text.toString(),
-                    Year.of(carYear.text.toString().toInt()),
-                    carPower.text.toString().toUInt(),
-                    carMileage.text.toString().toUInt(),
-                    carPrice.text.toString().toBigDecimal()
+    fun addNewCar(view: View) {
+        val carMake = binding.inputCarMake.text.trim().toString()
+        val carModel = binding.inputCarModel.text.trim().toString()
+        val carYear = binding.inputCarYearOfProduction.text.trim().toString()
+        val carPower = binding.inputCarPower.text.trim().toString()
+        val carMileage = binding.inputCarMileage.text.trim().toString()
+        val carPrice = binding.inputCarPrice.text.trim().toString()
+
+        try {
+            if(carMake.isEmpty() || carModel.isEmpty() || carYear.isEmpty() ||
+                carPower.isEmpty() || carMileage.isEmpty() || carPrice.isEmpty()) {
+                Toast.makeText(applicationContext,"Please fill out all of the fields!",Toast.LENGTH_SHORT).show()
+            }
+            else if(Year.of(carYear.toInt()) < Year.of(1886) ||
+                Year.of(carYear.toInt() - 1) > Year.now()) {
+                binding.inputCarYearOfProduction.error = "Invalid car year! -  Cars did not exist before 1886"
+            }
+            else if(carPower.toInt() < 0 || carPower.toInt() > 1900) {
+                binding.inputCarPower.error = "Invalid car horse power!"
+            }
+            else if(carMileage.toInt() < 0) {
+                binding.inputCarMileage.error = "Invalid car mileage!"
+            }
+            else if(carPrice.toBigDecimal() < BigDecimal.ZERO) {
+                binding.inputCarPrice.error = "Invalid car price!"
+            }
+            else {
+                Log.i(TAG,"Adding a new car to the list.")
+
+                val car = Car(
+                    carMake,
+                    carModel,
+                    Year.of(carYear.toInt()),
+                    carPower.toUInt(),
+                    carMileage.toUInt(),
+                    carPrice.toBigDecimal()
                 )
 
-                carCollection.add(newCar)
+                carCollection.add(car)
 
-                carMake.setText("")
-                carModel.setText("")
-                carYear.setText("")
-                carPower.setText("")
-                carMileage.setText("")
-                carPrice.setText("")
+                binding.inputCarMake.text.clear()
+                binding.inputCarModel.text.clear()
+                binding.inputCarYearOfProduction.text.clear()
+                binding.inputCarPower.text.clear()
+                binding.inputCarMileage.text.clear()
+                binding.inputCarPrice.text.clear()
             }
         }
-
-
-
+        catch(err: Exception) {
+            Log.e(TAG, err.toString())
+        }
     }
 }

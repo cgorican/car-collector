@@ -1,5 +1,6 @@
 package si.um.feri.carcollection
 
+import java.io.Serializable
 import java.math.BigDecimal
 import java.time.Year
 import java.util.*
@@ -12,7 +13,7 @@ class Car(
     var power: UInt,        // 360 hp
     var mileage: UInt,      // 43.812 km
     var price: BigDecimal   // 154.000 €
-) : Comparable<Car> {
+) : Comparable<Car>, Serializable {
     val id: UUID = UUID.randomUUID()
 
     init {

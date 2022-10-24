@@ -115,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/infoBtn"
+        app:layout_constraintStart_toEndOf="@+id/closeActivityBtn"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <TextView
@@ -199,7 +199,7 @@
         android:id="@+id/imageView"
         android:layout_width="201dp"
         android:layout_height="148dp"
-        android:contentDescription="@string/logo_desc"
+        android:contentDescription="@string/logo_alt_text"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -215,23 +215,9 @@
         android:backgroundTint="@color/lgray"
         android:text="@string/btn_return"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/infoBtn"
+        app:layout_constraintEnd_toStartOf="@+id/addCarBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <Button
-        android:id="@+id/infoBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/lgray"
-        android:onClick="logInfo"
-        android:text="@string/btn_info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addCarBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/closeActivityBtn"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
-        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

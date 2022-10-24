@@ -5,6 +5,7 @@ import java.math.BigDecimal
 import java.time.Year
 import java.util.*
 
+
 class Car(
     val make: String,       // Porsche
     val model: String,      // 964 Turbo
@@ -13,7 +14,7 @@ class Car(
     var power: UInt,        // 360 hp
     var mileage: UInt,      // 43.812 km
     var price: BigDecimal   // 154.000 €
-) : Comparable<Car>, Serializable {
+) : Comparable<Car>, Serializable  {
     val id: UUID = UUID.randomUUID()
 
     init {

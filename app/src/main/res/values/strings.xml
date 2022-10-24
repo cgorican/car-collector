@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">CarCollector</string>
+    <string name="app_description">Car Collector enables you to maintain your car collection, and alerts you when the service is needed or if there are any problems.\n\nIt allows you to add pictures of your cars so you can easily show your collection.</string>
+    <string name="app_author">Črt Goričan</string>
+    <string name="app_version">1.0</string>
 
-    <string name="logo_desc">App logo</string>
+    <string name="logo_alt_text">App logo</string>
+
+    <!-- AboutActivity -->
+    <string name="label_app_name">App name</string>
+    <string name="label_app_description">Description</string>
+    <string name="label_author">Author</string>
+    <string name="label_version">Version</string>
 
     <!-- SetOwnerActivity -->
     <string name="car_make">Make</string>
@@ -29,6 +38,7 @@
     <string name="btn_to_input_activity">+</string>
     <string name="btn_to_set_owner_activity">Set owner</string>
     <string name="btn_add_car">Add</string>
+    <string name="btn_about">About</string>
     <string name="btn_info">Info</string>
     <string name="btn_exit">Exit</string>
     <string name="btn_return">Back</string>

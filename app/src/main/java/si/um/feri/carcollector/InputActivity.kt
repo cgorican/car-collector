@@ -1,5 +1,7 @@
 package si.um.feri.carcollector
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.renderscript.ScriptGroup.Input
@@ -29,27 +31,14 @@ class InputActivity : AppCompatActivity() {
             this.finish()
         }
 
-        binding.infoBtn.setOnClickListener {
-            logInfo(binding.infoBtn)
-        }
-
         binding.addCarBtn.setOnClickListener {
             addNewCar(binding.addCarBtn)
         }
     }
 
-    fun logInfo(view: View) {
-        /*
-        when(carCollection.cars.size) {
-            0 -> Log.i(TAG, "There is no cars in the list.")
-            1 -> Log.i(TAG, "There is ${carCollection.cars.size} car in the list.")
-            else -> Log.i(TAG, "There are ${carCollection.cars.size} cars in the list.")
-        }
-        */
-    }
-
-
     fun addNewCar(view: View) {
+        val returnIntent = Intent()
+
         val carMake = binding.inputCarMake.text.trim().toString()
         val carModel = binding.inputCarModel.text.trim().toString()
         val carYear = binding.inputCarYearOfProduction.text.trim().toString()
@@ -87,18 +76,25 @@ class InputActivity : AppCompatActivity() {
                     carPrice.toBigDecimal()
                 )
 
-                //carCollection.add(car)
+                returnIntent.putExtra("new_car", car)
+                setResult(Activity.RESULT_OK, returnIntent)
+                clearInputFields()
+                this.finish()
 
-                binding.inputCarMake.text.clear()
-                binding.inputCarModel.text.clear()
-                binding.inputCarYearOfProduction.text.clear()
-                binding.inputCarPower.text.clear()
-                binding.inputCarMileage.text.clear()
-                binding.inputCarPrice.text.clear()
+                clearInputFields()
             }
         }
         catch(err: Exception) {
             Log.e(TAG, err.toString())
         }
+    }
+
+    fun clearInputFields() {
+        binding.inputCarMake.text.clear()
+        binding.inputCarModel.text.clear()
+        binding.inputCarYearOfProduction.text.clear()
+        binding.inputCarPower.text.clear()
+        binding.inputCarMileage.text.clear()
+        binding.inputCarPrice.text.clear()
     }
 }

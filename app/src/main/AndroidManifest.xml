@@ -13,6 +13,14 @@
         android:theme="@style/Theme.CarCollector"
         tools:targetApi="31">
         <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SetOwnerActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity">

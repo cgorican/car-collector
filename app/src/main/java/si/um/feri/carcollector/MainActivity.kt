@@ -1,14 +1,11 @@
 package si.um.feri.carcollector
 
-import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import si.um.feri.carcollection.*
@@ -29,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         this.title = "Car collection"
 
-        val ownerResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK) {
+        val setOwner = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+            if (result.resultCode == RESULT_OK) {
                 val firstName = result.data?.getStringExtra("first_name")
                 val lastName = result.data?.getStringExtra("last_name")
 
@@ -47,25 +44,36 @@ class MainActivity : AppCompatActivity() {
                     Log.e(TAG,"last_name is null")
                 }
             }
-
         }
 
+        val addCar = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+            if(result.resultCode == RESULT_OK) {
+                val car = result.data?.getSerializableExtra("new_car") as Car
+
+                carCollection.add(car)
+                Log.i(TAG, "New car added to collection")
+            }
+        }
+
+        binding.btnToAboutActivity.setOnClickListener {
+            toAboutActivity(binding.btnToAboutActivity)
+        }
 
         binding.btnToInputActivity.setOnClickListener {
-            toInputActivity(binding.btnToInputActivity)
+            addCar.launch(Intent(this, InputActivity::class.java))
         }
 
         binding.setOwnerBtn.setOnClickListener {
-            ownerResult.launch(Intent(this, SetOwnerActivity::class.java))
+            setOwner.launch(Intent(this, SetOwnerActivity::class.java))
         }
 
         updateSetOwnerBtn(binding.setOwnerBtn)
         updateOwnerDisplay(binding.ownerNameDisplay)
     }
 
-    fun toInputActivity(view: View) {
-        val intent = Intent(this, InputActivity::class.java)
-        //intent.putExtra("COLLECTION",carCollection)
+    fun toAboutActivity(view: View) {
+        val intent = Intent(this, AboutActivity::class.java)
         startActivity(intent)
     }
 

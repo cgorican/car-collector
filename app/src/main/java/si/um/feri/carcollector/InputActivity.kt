@@ -1,18 +1,22 @@
 package si.um.feri.carcollector
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Input
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanIntentResult
+import com.journeyapps.barcodescanner.ScanOptions
 import si.um.feri.carcollection.Car
 import si.um.feri.carcollector.databinding.ActivityInputBinding
-import si.um.feri.carcollector.databinding.ActivityMainBinding
 import java.math.BigDecimal
 import java.time.Year
+
 
 class InputActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputBinding
@@ -27,6 +31,26 @@ class InputActivity : AppCompatActivity() {
 
         this.title = "Add a car"
 
+        val getQECodeData = registerForActivityResult(ScanContract()) {
+            result: ScanIntentResult ->
+            if (result.contents == null) {
+                Toast.makeText(applicationContext,"Scan failed.", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                try {
+                    val gson = GsonBuilder().create()
+                    val car = gson.fromJson(result.contents, Car::class.java)
+                    setCarResult(car)
+                    this.finish()
+                }
+                catch(e: Exception) {
+                    Log.e(TAG, "Failed to add a car")
+                    Log.e(TAG, e.toString())
+                    Toast.makeText(applicationContext,"Failed to add the car.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
         binding.closeActivityBtn.setOnClickListener {
             this.finish()
         }
@@ -34,11 +58,20 @@ class InputActivity : AppCompatActivity() {
         binding.addCarBtn.setOnClickListener {
             addNewCar(binding.addCarBtn)
         }
+
+        binding.scanQRCode.setOnClickListener {
+            val options = ScanOptions()
+            options.setBeepEnabled(false)
+            options.createScanIntent(this)
+            options.addExtra("SCAN_MODE", "QR_CODE_MODE")
+            options.setOrientationLocked(false)
+            options.setPrompt("Scan the QR code")
+
+            getQECodeData.launch(options)
+        }
     }
 
     fun addNewCar(view: View) {
-        val returnIntent = Intent()
-
         val carMake = binding.inputCarMake.text.trim().toString()
         val carModel = binding.inputCarModel.text.trim().toString()
         val carYear = binding.inputCarYearOfProduction.text.trim().toString()
@@ -70,14 +103,13 @@ class InputActivity : AppCompatActivity() {
                 val car = Car(
                     carMake,
                     carModel,
-                    Year.of(carYear.toInt()),
+                    carYear.toInt(),
                     carPower.toUInt(),
                     carMileage.toUInt(),
                     carPrice.toBigDecimal()
                 )
 
-                returnIntent.putExtra("new_car", car)
-                setResult(Activity.RESULT_OK, returnIntent)
+                setCarResult(car)
                 clearInputFields()
                 this.finish()
 
@@ -87,6 +119,14 @@ class InputActivity : AppCompatActivity() {
         catch(err: Exception) {
             Log.e(TAG, err.toString())
         }
+    }
+
+    fun setCarResult(car: Car): Intent {
+        val intent = Intent()
+
+        intent.putExtra("new_car", car)
+        setResult(RESULT_OK, intent)
+        return intent
     }
 
     fun clearInputFields() {

@@ -5,11 +5,10 @@ import java.math.BigDecimal
 import java.time.Year
 import java.util.*
 
-
 class Car(
     val make: String,       // Porsche
     val model: String,      // 964 Turbo
-    val year: Year,         // 1990
+    val year: Int,         // 1990
 
     var power: UInt,        // 360 hp
     var mileage: UInt,      // 43.812 km
@@ -18,8 +17,8 @@ class Car(
     val id: UUID = UUID.randomUUID()
 
     init {
-        if(this.year.value < 1886 ||
-            this.year.value > Year.now().value) {
+        if(this.year < 1886 ||
+            this.year > Year.now().value) {
             throw IllegalStateException("Invalid year of production.")
         }
     }
@@ -30,12 +29,12 @@ class Car(
 
         score += this.power.toInt()
         score -= this.mileage.toInt()
-        score += this.year.value
+        score += this.year
         score += this.price.toInt()
 
         scoreOther += other.power.toInt()
         scoreOther -= other.mileage.toInt()
-        scoreOther += other.year.value
+        scoreOther += other.year
         scoreOther += other.price.toInt()
 
         if(scoreOther > score)  {
@@ -48,7 +47,7 @@ class Car(
         var result = String.format("%s %s, %d",
             make,
             model,
-            year.value)
+            year)
 
         result += String.format("\n%-10s %-10d hp", "Power:", power.toInt())
         result += String.format("\n%-10s %-10d km", "Mileage:", mileage.toInt())

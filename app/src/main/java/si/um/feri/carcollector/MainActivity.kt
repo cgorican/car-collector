@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import si.um.feri.carcollection.*
 import si.um.feri.carcollector.databinding.ActivityMainBinding
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,10 +30,14 @@ class MainActivity : AppCompatActivity() {
         val setOwner = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result: ActivityResult ->
             if (result.resultCode == RESULT_OK) {
-                val firstName = result.data?.getStringExtra("first_name")
-                val lastName = result.data?.getStringExtra("last_name")
+                var firstName = result.data?.getStringExtra("first_name")
+                var lastName = result.data?.getStringExtra("last_name")
 
                 if(firstName != null && lastName != null) {
+
+                    firstName = firstName.lowercase().replaceFirstChar { it.uppercaseChar() }
+                    lastName = lastName.lowercase().replaceFirstChar { it.uppercaseChar() }
+
                     carCollection.owner = Person(firstName,lastName)
                     updateSetOwnerBtn(binding.setOwnerBtn)
                     updateOwnerDisplay(binding.ownerNameDisplay)
@@ -52,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 val car = result.data?.getSerializableExtra("new_car") as Car
 
                 carCollection.add(car)
+                updateCarCount(binding.carCountDisplay)
                 Log.i(TAG, "New car added to collection")
             }
         }
@@ -68,8 +74,18 @@ class MainActivity : AppCompatActivity() {
             setOwner.launch(Intent(this, SetOwnerActivity::class.java))
         }
 
+        updateCarCount(binding.carCountDisplay)
         updateSetOwnerBtn(binding.setOwnerBtn)
         updateOwnerDisplay(binding.ownerNameDisplay)
+    }
+
+    fun updateCarCount(view: View) {
+        view as TextView
+        view.text = when(carCollection.cars.size) {
+            0 -> "No cars"
+            1 -> "1 car"
+            else -> "${carCollection.cars.size} cars"
+        }
     }
 
     fun toAboutActivity(view: View) {

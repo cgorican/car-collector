@@ -21,11 +21,11 @@
     <string name="car_price">Price (€)</string>
 
     <string name="car_make_hint">Porsche</string>
-    <string name="car_model_hint">992</string>
-    <string name="car_year_of_production_hint">2022</string>
+    <string name="car_model_hint">964</string>
+    <string name="car_year_of_production_hint">1991</string>
     <string name="car_horsepower_hint">380</string>
-    <string name="car_mileage_hint">53</string>
-    <string name="car_price_hint">186000</string>
+    <string name="car_mileage_hint">530</string>
+    <string name="car_price_hint">125400</string>
 
     <!-- SetOwnerActivity -->
     <string name="owner_first_name">First name</string>
@@ -39,6 +39,7 @@
     <string name="btn_to_set_owner_activity">Set owner</string>
     <string name="btn_add_car">Add</string>
     <string name="btn_about">About</string>
+    <string name="btn_qr_scanner">Scan QR</string>
     <string name="btn_info">Info</string>
     <string name="btn_exit">Exit</string>
     <string name="btn_return">Back</string>

@@ -26,7 +26,7 @@ class CarCollection(
                 val tmpCar = Car(
                     tmpMake,
                     faker.vehicle.modelsByMake(tmpMake),
-                    Year.of((1964..2022).random()),
+                    (1964..2022).random(),
                     (80..840).random().toUInt(),
                     (0..735301).random().toUInt(),
                     (13829..73301).random().toBigDecimal()

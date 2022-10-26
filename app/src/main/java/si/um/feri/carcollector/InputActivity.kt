@@ -1,14 +1,13 @@
 package si.um.feri.carcollector
 
 import android.content.Intent
-import android.os.Bundle
+import android.os.*
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
+import com.journeyapps.barcodescanner.CaptureActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -21,6 +20,7 @@ import java.time.Year
 class InputActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputBinding
     private val TAG = InputActivity::class.qualifiedName
+    private lateinit var vibrator: Vibrator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +30,9 @@ class InputActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         this.title = "Add a car"
+
+        setVibrator()
+
 
         val getQECodeData = registerForActivityResult(ScanContract()) {
             result: ScanIntentResult ->
@@ -46,6 +49,14 @@ class InputActivity : AppCompatActivity() {
                 catch(e: Exception) {
                     Log.e(TAG, "Failed to add a car")
                     Log.e(TAG, e.toString())
+                    if(vibrator.hasVibrator()) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE))
+                        }
+                        else {
+                            vibrator.vibrate(500)
+                        }
+                    }
                     Toast.makeText(applicationContext,"Failed to add the car.", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -136,5 +147,18 @@ class InputActivity : AppCompatActivity() {
         binding.inputCarPower.text.clear()
         binding.inputCarMileage.text.clear()
         binding.inputCarPrice.text.clear()
+    }
+
+    fun setVibrator() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            this.vibrator = vibratorManager.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            this.vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
+        if(!vibrator.hasVibrator()) {
+            Log.i(TAG, "Device does not have a vibrator!")
+        }
     }
 }

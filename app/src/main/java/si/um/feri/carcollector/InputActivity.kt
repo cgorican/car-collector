@@ -47,8 +47,7 @@ class InputActivity : AppCompatActivity() {
                     this.finish()
                 }
                 catch(e: Exception) {
-                    Log.e(TAG, "Failed to add a car")
-                    Log.e(TAG, e.toString())
+                    Log.e(TAG, "Invalid QR code")
                     if(vibrator.hasVibrator()) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                             vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE))
@@ -57,7 +56,7 @@ class InputActivity : AppCompatActivity() {
                             vibrator.vibrate(500)
                         }
                     }
-                    Toast.makeText(applicationContext,"Failed to add the car.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"Invalid QR code.", Toast.LENGTH_SHORT).show()
                 }
             }
         }

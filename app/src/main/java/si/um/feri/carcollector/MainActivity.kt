@@ -101,11 +101,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateOwnerDisplay(view: View) {
-        view.visibility = when(carCollection.owner) {
-            null -> View.INVISIBLE
-            else -> View.VISIBLE
+        when(carCollection.owner) {
+            null -> view.visibility = View.INVISIBLE
+            else -> {
+                view.visibility = View.VISIBLE
+                view as TextView
+                view.text = String.format("%s %s\' collection",  carCollection.owner!!.firstname, carCollection.owner!!.lastname)
+            }
         }
-        view as TextView
-        view.text = "${carCollection.owner.toString()}'s collection"
     }
 }

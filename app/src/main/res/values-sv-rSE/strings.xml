@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logo_alt_text">Logotyp</string>
+    <string name="label_app_name">Applikationsnamn</string>
+    <string name="label_app_description">Beskrivning</string>
+    <string name="label_author">Författare</string>
+    <string name="label_version">Version</string>
+    <string name="car_make">Märke</string>
+    <string name="car_model">Modell</string>
+    <string name="car_year_of_production">År</string>
+    <string name="car_horsepower">Motoreffekt (HK)</string>
+    <string name="car_price">Pris (EUR)</string>
+    <string name="car_mileage">Antal km</string>
+    <string name="owner_first_name">Förnamn</string>
+    <string name="owner_last_name">Efternamn</string>
+    <string name="btn_to_set_owner_activity">Ställ ägaren</string>
+    <string name="btn_add_car" translatable="false">Lägg till</string>
+    <string name="btn_about" translatable="false">Handla om</string>
+    <string name="btn_qr_scanner" translatable="false">Skanna QR</string>
+    <string name="owner_first_name_hint">Lars</string>
+    <string name="owner_last_name_hint">Johansson</string>
+    <string name="btn_exit">Gå bort</string>
+    <string name="btn_return">Tillbaka</string>
+    <string name="btn_confirm">Bekräfta</string>
+    <string name="desc_btn_add_car">Lägg till en ny bil i samlingen</string>
+    <string name="desc_btn_about">Om applikationen</string>
+    <string name="desc_btn_scan_qr_code">Skanna QR-koden</string>
+    <string name="btn_info">Info</string>
+    <string name="app_description">Car Collector gör att du kan underhålla din bilsamling och varnar dig när tjänsten behövs eller om det finns några problem.\n\nDet låter dig lägga till bilder på dina bilar så att du enkelt kan visa din samling.</string>
+</resources>

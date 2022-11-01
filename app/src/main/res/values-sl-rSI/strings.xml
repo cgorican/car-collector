@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logo_alt_text">Logotip</string>
+    <string name="label_app_name">Ime aplikacije</string>
+    <string name="label_app_description">Opis</string>
+    <string name="label_author">Avtor</string>
+    <string name="label_version">Verzija</string>
+    <string name="car_make">Proizvajalec</string>
+    <string name="car_model">Model</string>
+    <string name="car_year_of_production">Leto</string>
+    <string name="car_horsepower">Moč (KM)</string>
+    <string name="car_price">Cena (€)</string>
+    <string name="car_mileage">Prevoženi km</string>
+    <string name="owner_first_name">Ime</string>
+    <string name="owner_last_name">Priimek</string>
+    <string name="btn_to_set_owner_activity">Uredi lastnika</string>
+    <string name="btn_add_car">Dodaj</string>
+    <string name="btn_about">O aplikaciji</string>
+    <string name="btn_qr_scanner">Skeniraj QR</string>
+    <string name="app_description">Car Collector vam olajša vzdrževanje vaše zbirke avtomobilov in vas obvesti na servise.\n\nOmogoča tudi dodajanje slik vaših avtomobilov, tako da z lahkoto delite svojo zbirko.</string>
+    <string name="owner_first_name_hint">Janez</string>
+    <string name="owner_last_name_hint">Novak</string>
+    <string name="btn_info">Info</string>
+    <string name="btn_exit">Izhod</string>
+    <string name="btn_return">Nazaj</string>
+    <string name="btn_confirm">Potrdi</string>
+    <string name="desc_btn_add_car">Dodaj nov avto v zbirko</string>
+    <string name="desc_btn_about">O aplikaciji</string>
+    <string name="desc_btn_scan_qr_code">Skeniraj QR kodo</string>
+</resources>

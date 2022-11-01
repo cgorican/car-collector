@@ -10,12 +10,14 @@
         android:id="@+id/textView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/margin_left_right"
         android:layout_marginTop="24dp"
         android:gravity="bottom"
         android:text="@string/owner_first_name"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_label"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintBottom_toBottomOf="@+id/inputOwnerFirstName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -23,10 +25,13 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/margin_left_right"
         android:layout_marginBottom="16dp"
         android:text="@string/owner_last_name"
+        android:textSize="@dimen/text_size_label"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintBottom_toBottomOf="@+id/inputOwnerLastName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -34,31 +39,40 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
         android:ems="10"
-        android:gravity="bottom"
         android:hint="@string/owner_first_name_hint"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#78909C"
+        android:minHeight="@dimen/input_min_height"
+        android:textColor="@color/primary_dark"
+        android:textColorHint="@color/gray_light"
+        android:textSize="@dimen/text_size_input"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView1"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <EditText
         android:id="@+id/inputOwnerLastName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="@string/owner_last_name_hint"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#78909C"
+        android:minHeight="@dimen/input_min_height"
+        android:textColor="@color/primary_dark"
+        android:textColorHint="@color/gray_light"
+        android:textSize="@dimen/text_size_input"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/inputOwnerFirstName" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -84,8 +98,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="201dp"
-        android:layout_height="148dp"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
         android:contentDescription="@string/logo_alt_text"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,39 +111,37 @@
 
     <Button
         android:id="@+id/closeActivityBtn"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/lgray"
+        android:layout_width="@dimen/btn_width_wide"
+        android:layout_height="@dimen/btn_height"
+        android:backgroundTint="@color/secondary_light"
         android:text="@string/btn_return"
+        android:textSize="@dimen/text_size_btn"
+        android:fontFamily="@font/poppins_semi_bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/setOwnerBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
         tools:ignore="TextContrastCheck" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <Button
         android:id="@+id/setOwnerBtn"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/btn_width_wide"
+        android:layout_height="@dimen/btn_height"
         android:text="@string/btn_confirm"
+        android:textSize="@dimen/text_size_btn"
+        android:fontFamily="@font/poppins_semi_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/closeActivityBtn"
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

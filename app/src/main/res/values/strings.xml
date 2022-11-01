@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">CarCollector</string>
-    <string name="app_description">Car Collector enables you to maintain your car collection, and alerts you when the service is needed or if there are any problems.\n\nIt allows you to add pictures of your cars so you can easily show your collection.</string>
-    <string name="app_author">Črt Goričan</string>
-    <string name="app_version">1.0</string>
+    <string name="app_name" translatable="false">CarCollector</string>
+    <string name="app_description">Car Collector enables you to maintain your car collection and alerts you when the service is needed or if there are any problems.\n\nIt allows you to add pictures of your cars so you can easily show your collection.</string>
+    <string name="app_author" translatable="false">Črt Goričan</string>
+    <string name="app_version" translatable="false">1.0</string>
 
     <string name="logo_alt_text">App logo</string>
 
@@ -20,22 +20,21 @@
     <string name="car_mileage">Mileage (km)</string>
     <string name="car_price">Price (€)</string>
 
-    <string name="car_make_hint">Porsche</string>
-    <string name="car_model_hint">964</string>
-    <string name="car_year_of_production_hint">1991</string>
-    <string name="car_horsepower_hint">380</string>
-    <string name="car_mileage_hint">530</string>
-    <string name="car_price_hint">125400</string>
+    <string name="car_make_hint" translatable="false">Porsche</string>
+    <string name="car_model_hint" translatable="false">964</string>
+    <string name="car_year_of_production_hint" translatable="false">1991</string>
+    <string name="car_horsepower_hint" translatable="false">380</string>
+    <string name="car_mileage_hint" translatable="false">530</string>
+    <string name="car_price_hint" translatable="false">125400</string>
 
     <!-- SetOwnerActivity -->
     <string name="owner_first_name">First name</string>
     <string name="owner_last_name">Last name</string>
 
-    <string name="owner_first_name_hint">Janez</string>
-    <string name="owner_last_name_hint">Novak</string>
+    <string name="owner_first_name_hint">Bob</string>
+    <string name="owner_last_name_hint">Smith</string>
 
     <!-- Buttons -->
-    <string name="btn_to_input_activity">+</string>
     <string name="btn_to_set_owner_activity">Set owner</string>
     <string name="btn_add_car">Add</string>
     <string name="btn_about">About</string>
@@ -44,4 +43,9 @@
     <string name="btn_exit">Exit</string>
     <string name="btn_return">Back</string>
     <string name="btn_confirm">Confirm</string>
+
+    <!-- Content description -->
+    <string name="desc_btn_add_car">Add a new car to the collection</string>
+    <string name="desc_btn_about">About the app</string>
+    <string name="desc_btn_scan_qr_code">Scan the QR code</string>
 </resources>

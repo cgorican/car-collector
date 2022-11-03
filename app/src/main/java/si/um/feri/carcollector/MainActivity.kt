@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        this.title = "Car collection"
+        this.title = getString(R.string.activity_title_main)
 
         val setOwner = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result: ActivityResult ->
@@ -82,9 +82,10 @@ class MainActivity : AppCompatActivity() {
     fun updateCarCount(view: View) {
         view as TextView
         view.text = when(carCollection.cars.size) {
-            0 -> "No cars"
-            1 -> "1 car"
-            else -> "${carCollection.cars.size} cars"
+            0 -> getString(R.string.no_car)
+            1 -> getString(R.string.noun_car_single)
+            2 -> "${carCollection.cars.size} ${getString(R.string.noun_car_double)}"
+            else -> "${carCollection.cars.size} ${getString(R.string.noun_car_plural)}"
         }
     }
 

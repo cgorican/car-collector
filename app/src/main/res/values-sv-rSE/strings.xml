@@ -27,4 +27,12 @@
     <string name="desc_btn_scan_qr_code">Skanna QR-koden</string>
     <string name="btn_info">Info</string>
     <string name="app_description">Car Collector gör att du kan underhålla din bilsamling och varnar dig när tjänsten behövs eller om det finns några problem.\n\nDet låter dig lägga till bilder på dina bilar så att du enkelt kan visa din samling.</string>
+    <string name="noun_car_single">bil</string>
+    <string name="no_car">0 bilar</string>
+    <string name="noun_car_plural">bilar</string>
+    <string name="noun_car_double">bilar</string>
+    <string name="activity_title_main">Bilsamling</string>
+    <string name="activity_title_about">Om applikationen</string>
+    <string name="activity_title_input">Lägg till en bil</string>
+    <string name="activity_title_set_owner">Ställ ägaren</string>
 </resources>

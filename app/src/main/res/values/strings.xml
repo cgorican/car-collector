@@ -48,4 +48,12 @@
     <string name="desc_btn_add_car">Add a new car to the collection</string>
     <string name="desc_btn_about">About the app</string>
     <string name="desc_btn_scan_qr_code">Scan the QR code</string>
+    <string name="noun_car_single">car</string>
+    <string name="noun_car_plural">cars</string>
+    <string name="no_car">0 cars</string>
+    <string name="noun_car_double">cars</string>
+    <string name="activity_title_main">Car collection</string>
+    <string name="activity_title_about">About</string>
+    <string name="activity_title_input">Add a car</string>
+    <string name="activity_title_set_owner">Set owner</string>
 </resources>

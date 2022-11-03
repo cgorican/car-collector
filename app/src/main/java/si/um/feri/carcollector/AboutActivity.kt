@@ -15,6 +15,6 @@ class AboutActivity : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        this.title = "About the app"
+        this.title = getString(R.string.activity_title_about)
     }
 }

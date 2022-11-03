@@ -29,7 +29,7 @@ class InputActivity : AppCompatActivity() {
         binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        this.title = "Add a car"
+        this.title = getString(R.string.activity_title_input)
 
         setVibrator()
 

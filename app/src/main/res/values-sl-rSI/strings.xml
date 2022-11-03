@@ -27,4 +27,12 @@
     <string name="desc_btn_add_car">Dodaj nov avto v zbirko</string>
     <string name="desc_btn_about">O aplikaciji</string>
     <string name="desc_btn_scan_qr_code">Skeniraj QR kodo</string>
+    <string name="noun_car_single">avto</string>
+    <string name="no_car">0 avtomobilov</string>
+    <string name="noun_car_plural">avtov</string>
+    <string name="noun_car_double">avta</string>
+    <string name="activity_title_main">Zbirka avtov</string>
+    <string name="activity_title_about">O aplikaciji</string>
+    <string name="activity_title_input">Dodaj avto</string>
+    <string name="activity_title_set_owner">Nastavi lastnika</string>
 </resources>

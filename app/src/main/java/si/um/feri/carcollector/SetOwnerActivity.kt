@@ -19,7 +19,7 @@ class SetOwnerActivity : AppCompatActivity() {
         binding = ActivitySetOwnerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        this.title = "Owner info"
+        this.title = getString(R.string.activity_title_set_owner)
 
         binding.closeActivityBtn.setOnClickListener {
             clearInputFields()

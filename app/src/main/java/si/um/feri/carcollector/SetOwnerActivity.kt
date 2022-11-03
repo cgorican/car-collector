@@ -42,15 +42,15 @@ class SetOwnerActivity : AppCompatActivity() {
         val lastName = binding.inputOwnerLastName.text.trim().toString()
 
         if(firstName.isEmpty() && lastName.isEmpty()) {
-            Toast.makeText(applicationContext,"Please fill out the fields!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, getString(R.string.error_empty_fields_all), Toast.LENGTH_SHORT).show()
         }
         else if(firstName.isEmpty()) {
-            binding.inputOwnerFirstName.error = "Invalid first name!"
-            Toast.makeText(applicationContext,"Invalid first name!", Toast.LENGTH_SHORT).show()
+            binding.inputOwnerFirstName.error = getString(R.string.error_invalid_first_name)
+            Toast.makeText(applicationContext,getString(R.string.error_invalid_first_name), Toast.LENGTH_SHORT).show()
         }
         else if(lastName.isEmpty()) {
-            binding.inputOwnerLastName.error = "Invalid last name!"
-            Toast.makeText(applicationContext,"Invalid last name!", Toast.LENGTH_SHORT).show()
+            binding.inputOwnerLastName.error = getString(R.string.error_invalid_last_name)
+            Toast.makeText(applicationContext,getString(R.string.error_invalid_last_name), Toast.LENGTH_SHORT).show()
         }
         else {
             returnIntent.putExtra("first_name", firstName)

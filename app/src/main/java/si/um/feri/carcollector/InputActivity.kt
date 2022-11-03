@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.GsonBuilder
-import com.journeyapps.barcodescanner.CaptureActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -37,7 +36,7 @@ class InputActivity : AppCompatActivity() {
         val getQECodeData = registerForActivityResult(ScanContract()) {
             result: ScanIntentResult ->
             if (result.contents == null) {
-                Toast.makeText(applicationContext,"Scan failed.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,getString(R.string.error_scan_failed), Toast.LENGTH_SHORT).show()
             }
             else {
                 try {
@@ -56,7 +55,7 @@ class InputActivity : AppCompatActivity() {
                             vibrator.vibrate(500)
                         }
                     }
-                    Toast.makeText(applicationContext,"Invalid QR code.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,getString(R.string.error_invalid_qr_code), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -75,7 +74,7 @@ class InputActivity : AppCompatActivity() {
             options.createScanIntent(this)
             options.addExtra("SCAN_MODE", "QR_CODE_MODE")
             options.setOrientationLocked(false)
-            options.setPrompt("Scan the QR code")
+            options.setPrompt(getString(R.string.prompt_scan_qr_code))
 
             getQECodeData.launch(options)
         }
@@ -92,20 +91,20 @@ class InputActivity : AppCompatActivity() {
         try {
             if(carMake.isEmpty() || carModel.isEmpty() || carYear.isEmpty() ||
                 carPower.isEmpty() || carMileage.isEmpty() || carPrice.isEmpty()) {
-                Toast.makeText(applicationContext,"Please fill out all of the fields!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,getString(R.string.error_empty_fields_all), Toast.LENGTH_SHORT).show()
             }
             else if(Year.of(carYear.toInt()) < Year.of(1886) ||
                 Year.of(carYear.toInt() - 1) > Year.now()) {
-                binding.inputCarYearOfProduction.error = "Invalid car year! -  Cars did not exist before 1886"
+                binding.inputCarYearOfProduction.error = getString(R.string.error_invalid_car_year)
             }
             else if(carPower.toInt() < 0 || carPower.toInt() > 1900) {
-                binding.inputCarPower.error = "Invalid car horse power!"
+                binding.inputCarPower.error = getString(R.string.error_invalid_car_hp)
             }
             else if(carMileage.toInt() < 0) {
-                binding.inputCarMileage.error = "Invalid car mileage!"
+                binding.inputCarMileage.error = getString(R.string.error_invalid_car_mileage)
             }
             else if(carPrice.toBigDecimal() < BigDecimal.ZERO) {
-                binding.inputCarPrice.error = "Invalid car price!"
+                binding.inputCarPrice.error = getString(R.string.error_invalid_car_price)
             }
             else {
                 Log.i(TAG,"Adding a new car to the list.")

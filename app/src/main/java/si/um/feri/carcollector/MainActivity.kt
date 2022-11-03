@@ -10,7 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import si.um.feri.carcollection.*
 import si.um.feri.carcollector.databinding.ActivityMainBinding
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -82,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     fun updateCarCount(view: View) {
         view as TextView
         view.text = when(carCollection.cars.size) {
-            0 -> getString(R.string.no_car)
+            0 -> getString(R.string.no_cars)
             1 -> getString(R.string.noun_car_single)
             2 -> "${carCollection.cars.size} ${getString(R.string.noun_car_double)}"
             else -> "${carCollection.cars.size} ${getString(R.string.noun_car_plural)}"
@@ -107,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             else -> {
                 view.visibility = View.VISIBLE
                 view as TextView
-                view.text = String.format("%s %s\' collection",  carCollection.owner!!.firstname, carCollection.owner!!.lastname)
+                view.text = String.format("%s %s ${R.string.noun_collection}",  carCollection.owner!!.firstname, carCollection.owner!!.lastname)
             }
         }
     }

@@ -14,9 +14,6 @@
     <string name="owner_first_name">Ime</string>
     <string name="owner_last_name">Priimek</string>
     <string name="btn_to_set_owner_activity">Uredi lastnika</string>
-    <string name="btn_add_car">Dodaj</string>
-    <string name="btn_about">O aplikaciji</string>
-    <string name="btn_qr_scanner">Skeniraj QR</string>
     <string name="app_description">Car Collector vam olajša vzdrževanje vaše zbirke avtomobilov in vas obvesti na servise.\n\nOmogoča tudi dodajanje slik vaših avtomobilov, tako da z lahkoto delite svojo zbirko.</string>
     <string name="owner_first_name_hint">Janez</string>
     <string name="owner_last_name_hint">Novak</string>
@@ -28,11 +25,25 @@
     <string name="desc_btn_about">O aplikaciji</string>
     <string name="desc_btn_scan_qr_code">Skeniraj QR kodo</string>
     <string name="noun_car_single">avto</string>
-    <string name="no_car">0 avtomobilov</string>
+    <string name="no_cars">Ni avtomobilov</string>
     <string name="noun_car_plural">avtov</string>
     <string name="noun_car_double">avta</string>
     <string name="activity_title_main">Zbirka avtov</string>
     <string name="activity_title_about">O aplikaciji</string>
     <string name="activity_title_input">Dodaj avto</string>
     <string name="activity_title_set_owner">Nastavi lastnika</string>
+    <string name="noun_collection">zbirka</string>
+    <string name="prompt_scan_qr_code">Skenirajte QR kodo.</string>
+    <string name="btn_add_car">Dodaj</string>
+    <string name="btn_about">O aplikaciji</string>
+    <string name="btn_qr_scanner">Skeniraj QR</string>
+    <string name="error_invalid_car_year">Neveljavno leto!</string>
+    <string name="error_invalid_car_hp">Neveljavna moč!</string>
+    <string name="error_invalid_car_mileage">Neveljavni kilometri!</string>
+    <string name="error_invalid_car_price">Neveljavna cena!</string>
+    <string name="error_invalid_qr_code">Neveljavna QR koda!</string>
+    <string name="error_scan_failed">Skeniranje ni uspelo!</string>
+    <string name="error_invalid_last_name">Neveljavni priimek!</string>
+    <string name="error_invalid_first_name">Neveljavno ime!</string>
+    <string name="error_empty_fields_all">Izpolnite polja!</string>
 </resources>

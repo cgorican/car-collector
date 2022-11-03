@@ -14,9 +14,6 @@
     <string name="owner_first_name">Förnamn</string>
     <string name="owner_last_name">Efternamn</string>
     <string name="btn_to_set_owner_activity">Ställ ägaren</string>
-    <string name="btn_add_car" translatable="false">Lägg till</string>
-    <string name="btn_about" translatable="false">Handla om</string>
-    <string name="btn_qr_scanner" translatable="false">Skanna QR</string>
     <string name="owner_first_name_hint">Lars</string>
     <string name="owner_last_name_hint">Johansson</string>
     <string name="btn_exit">Gå bort</string>
@@ -28,11 +25,25 @@
     <string name="btn_info">Info</string>
     <string name="app_description">Car Collector gör att du kan underhålla din bilsamling och varnar dig när tjänsten behövs eller om det finns några problem.\n\nDet låter dig lägga till bilder på dina bilar så att du enkelt kan visa din samling.</string>
     <string name="noun_car_single">bil</string>
-    <string name="no_car">0 bilar</string>
+    <string name="no_cars">Inga bilar</string>
     <string name="noun_car_plural">bilar</string>
     <string name="noun_car_double">bilar</string>
     <string name="activity_title_main">Bilsamling</string>
     <string name="activity_title_about">Om applikationen</string>
     <string name="activity_title_input">Lägg till en bil</string>
     <string name="activity_title_set_owner">Ställ ägaren</string>
+    <string name="noun_collection">samling</string>
+    <string name="prompt_scan_qr_code">Skanna QR-koden.</string>
+    <string name="btn_add_car">Lägg till</string>
+    <string name="btn_about">Om applikation</string>
+    <string name="btn_qr_scanner">Skanna QR</string>
+    <string name="error_invalid_car_price">Ogiltig pris!</string>
+    <string name="error_invalid_car_mileage">Ogiltig kilometertal!</string>
+    <string name="error_invalid_car_hp">Ogiltig motoreffekt!</string>
+    <string name="error_invalid_car_year">Ogiltig år!</string>
+    <string name="error_empty_fields_all">Fyll i fälten!</string>
+    <string name="error_invalid_first_name">Ogiltigt förnamn!</string>
+    <string name="error_invalid_last_name">Ogiltigt efternamn!</string>
+    <string name="error_scan_failed">Skanningen misslyckades!</string>
+    <string name="error_invalid_qr_code">Ogiltig QR-kod!</string>
 </resources>

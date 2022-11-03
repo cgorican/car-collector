@@ -36,13 +36,14 @@
 
     <!-- Buttons -->
     <string name="btn_to_set_owner_activity">Set owner</string>
-    <string name="btn_add_car">Add</string>
-    <string name="btn_about">About</string>
-    <string name="btn_qr_scanner">Scan QR</string>
     <string name="btn_info">Info</string>
     <string name="btn_exit">Exit</string>
     <string name="btn_return">Back</string>
     <string name="btn_confirm">Confirm</string>
+
+    <string name="btn_add_car">Add</string>
+    <string name="btn_about">About</string>
+    <string name="btn_qr_scanner">Scan QR</string>
 
     <!-- Content description -->
     <string name="desc_btn_add_car">Add a new car to the collection</string>
@@ -50,10 +51,21 @@
     <string name="desc_btn_scan_qr_code">Scan the QR code</string>
     <string name="noun_car_single">car</string>
     <string name="noun_car_plural">cars</string>
-    <string name="no_car">0 cars</string>
+    <string name="no_cars">No cars</string>
     <string name="noun_car_double">cars</string>
     <string name="activity_title_main">Car collection</string>
     <string name="activity_title_about">About</string>
     <string name="activity_title_input">Add a car</string>
     <string name="activity_title_set_owner">Set owner</string>
+    <string name="noun_collection">collection</string>
+    <string name="error_empty_fields_all">Please, fill out the fields!</string>
+    <string name="error_invalid_first_name">Invalid first name!</string>
+    <string name="error_invalid_last_name">Invalid last name!</string>
+    <string name="error_scan_failed">Scan failed!</string>
+    <string name="error_invalid_qr_code">Invalid QR code!</string>
+    <string name="prompt_scan_qr_code">Scan the QR code.</string>
+    <string name="error_invalid_car_year">Invalid year!</string>
+    <string name="error_invalid_car_hp">Invalid horsepower!</string>
+    <string name="error_invalid_car_mileage">Invalid mileage!</string>
+    <string name="error_invalid_car_price">Invalid price!</string>
 </resources>

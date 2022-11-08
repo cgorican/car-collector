@@ -13,12 +13,13 @@ import si.um.feri.carcollector.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private var carCollection = CarCollection(null)
     private lateinit var binding: ActivityMainBinding
     private val TAG = MainActivity::class.qualifiedName
+    private lateinit var app: MyApplication
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        app = application as MyApplication
         setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                     firstName = firstName.lowercase().replaceFirstChar { it.uppercaseChar() }
                     lastName = lastName.lowercase().replaceFirstChar { it.uppercaseChar() }
 
-                    carCollection.owner = Person(firstName,lastName)
+                    app.data.owner = Person(firstName,lastName)
                     updateSetOwnerBtn(binding.setOwnerBtn)
                     updateOwnerDisplay(binding.ownerNameDisplay)
                 }
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             if(result.resultCode == RESULT_OK) {
                 val car = result.data?.getSerializableExtra("new_car") as Car
 
-                carCollection.add(car)
+                app.data.cars.add(car)
                 updateCarCount(binding.carCountDisplay)
                 Log.i(TAG, "New car added to collection")
             }
@@ -80,11 +81,11 @@ class MainActivity : AppCompatActivity() {
 
     fun updateCarCount(view: View) {
         view as TextView
-        view.text = when(carCollection.cars.size) {
+        view.text = when(app.data.cars.size) {
             0 -> getString(R.string.no_cars)
             1 -> getString(R.string.noun_car_single)
-            2 -> "${carCollection.cars.size} ${getString(R.string.noun_car_double)}"
-            else -> "${carCollection.cars.size} ${getString(R.string.noun_car_plural)}"
+            2 -> "${app.data.cars.size} ${getString(R.string.noun_car_double)}"
+            else -> "${app.data.cars.size} ${getString(R.string.noun_car_plural)}"
         }
     }
 
@@ -94,19 +95,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateSetOwnerBtn(view: View) {
-        view.visibility = when(carCollection.owner) {
+        view.visibility = when(app.data.owner) {
             null -> View.VISIBLE
             else -> View.INVISIBLE
         }
     }
 
     fun updateOwnerDisplay(view: View) {
-        when(carCollection.owner) {
+        when(app.data.owner) {
             null -> view.visibility = View.INVISIBLE
             else -> {
                 view.visibility = View.VISIBLE
                 view as TextView
-                view.text = String.format("%s %s ${R.string.noun_collection}",  carCollection.owner!!.firstname, carCollection.owner!!.lastname)
+                view.text = String.format("%s %s ${R.string.noun_collection}",  app.data.owner!!.firstname, app.data.owner!!.lastname)
             }
         }
     }

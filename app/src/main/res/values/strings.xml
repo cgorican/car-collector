@@ -5,6 +5,7 @@
     <string name="app_version" translatable="false">1.0</string>
 
     <string name="logo_alt_text">App logo</string>
+    <string name="path_saved_data_file" translatable="false">./car_collector_data</string>
 
     <!-- AboutActivity -->
     <string name="label_app_name">App name</string>
@@ -68,4 +69,9 @@
     <string name="error_invalid_car_hp">Invalid horsepower!</string>
     <string name="error_invalid_car_mileage">Invalid mileage!</string>
     <string name="error_invalid_car_price">Invalid price!</string>
+    <string name="activity_title_settings">Settings</string>
+    <string name="settings">Settings</string>
+    <string name="label_uuid" translatable="false">UUID</string>
+    <string name="noun_uuid" translatable="false">UUID</string>
+    <string name="path_shared_pref" translatable="false">ShrPref</string>
 </resources>

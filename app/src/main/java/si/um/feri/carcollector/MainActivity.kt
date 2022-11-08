@@ -3,6 +3,9 @@ package si.um.feri.carcollector
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
@@ -77,6 +80,23 @@ class MainActivity : AppCompatActivity() {
         updateCarCount(binding.carCountDisplay)
         updateSetOwnerBtn(binding.setOwnerBtn)
         updateOwnerDisplay(binding.ownerNameDisplay)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.settings -> {
+                //newGame()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     fun updateCarCount(view: View) {

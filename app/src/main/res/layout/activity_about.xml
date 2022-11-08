@@ -187,4 +187,42 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.6075206" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <TextView
+        android:id="@+id/uuidLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:text="@string/label_uuid"
+        android:textColor="@color/gray_light"
+        android:textSize="@dimen/text_size_label"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+    <TextView
+        android:id="@+id/appSessionUUIDView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
+        android:text="@string/noun_uuid"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_value"
+        android:maxHeight="@dimen/text_size_value"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
 </androidx.constraintlayout.widget.ConstraintLayout>

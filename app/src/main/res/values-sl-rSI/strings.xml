@@ -46,4 +46,6 @@
     <string name="error_invalid_last_name">Neveljavni priimek!</string>
     <string name="error_invalid_first_name">Neveljavno ime!</string>
     <string name="error_empty_fields_all">Izpolnite polja!</string>
+    <string name="activity_title_settings">Nastavitve</string>
+    <string name="settings">Nastavitve</string>
 </resources>

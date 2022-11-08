@@ -46,4 +46,6 @@
     <string name="error_invalid_last_name">Ogiltigt efternamn!</string>
     <string name="error_scan_failed">Skanningen misslyckades!</string>
     <string name="error_invalid_qr_code">Ogiltig QR-kod!</string>
+    <string name="activity_title_settings">Inställningar</string>
+    <string name="settings">Inställningar</string>
 </resources>

@@ -52,6 +52,7 @@
         android:textSize="@dimen/text_size_value"
         android:layout_marginBottom="@dimen/margin_left_right"
         android:contentDescription="@string/desc_spinner_view_type"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -60,10 +61,10 @@
 
     <Switch
         android:id="@+id/switch_notifications"
-        android:layout_marginStart="@dimen/margin_left_right"
-        android:layout_marginEnd="@dimen/margin_left_right"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/poppins_regular"
         android:maxHeight="@dimen/text_size_label"
@@ -73,6 +74,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline18" />
+        app:layout_constraintTop_toTopOf="@+id/guideline18"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

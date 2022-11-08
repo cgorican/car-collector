@@ -26,10 +26,26 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.switchNotifications.setOnCheckedChangeListener { _, isChecked ->
             app.editor.putBoolean(getString(R.string.shared_pref_notifications), isChecked)
+            app.editor.apply()
         }
 
         // Spinner setup
         setupViewTypeSpinner()
+
+        // Recover state from sharedPreferences
+        applySharedPref()
+    }
+
+    private fun applySharedPref() {
+        val notifications = app.sharedPref.getBoolean(getString(R.string.shared_pref_notifications), true)
+        val viewTypeValue = app.sharedPref.getInt(getString(R.string.shared_pref_view_type), ViewTypeEnum.LIST.value)
+        val viewType: ViewTypeEnum = when(viewTypeValue) {
+            ViewTypeEnum.GRID.value -> ViewTypeEnum.GRID
+            else -> ViewTypeEnum.LIST
+        }
+
+        binding.switchNotifications.isChecked = notifications
+        binding.spinnerViewType.setSelection(viewType.value)
     }
 
     private fun setupViewTypeSpinner() {

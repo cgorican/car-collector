@@ -9,4 +9,9 @@
         android:actionLayout="@layout/activity_settings"
         android:title="@string/settings"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/analytics"
+        android:actionLayout="@layout/activity_analytics"
+        android:title="@string/noun_analytics"
+        app:showAsAction="never"/>
 </menu>

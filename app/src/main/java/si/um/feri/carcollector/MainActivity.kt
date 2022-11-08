@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        updateCount()
+
         this.title = getString(R.string.activity_title_main)
 
         val setOwner = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -96,6 +98,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.analytics -> {
+                val intent = Intent(this, AnalyticsActivity::class.java)
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -131,5 +138,12 @@ class MainActivity : AppCompatActivity() {
                 view.text = String.format("%s %s ${R.string.noun_collection}",  app.data.owner!!.firstname, app.data.owner!!.lastname)
             }
         }
+    }
+
+    private fun updateCount() {
+        val keyword: String = getString(R.string.label_analytics_activity_main)
+        val count = app.sharedPref.getInt(keyword,0) + 1
+        app.editor.putInt(keyword, count)
+        app.editor.apply()
     }
 }

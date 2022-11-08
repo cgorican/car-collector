@@ -11,15 +11,19 @@ import si.um.feri.carcollector.databinding.ActivitySetOwnerBinding
 class SetOwnerActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetOwnerBinding
     private val TAG = SetOwnerActivity::class.qualifiedName
+    private lateinit var app: MyApplication
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        app = application as MyApplication
         setContentView(R.layout.activity_set_owner)
 
         binding = ActivitySetOwnerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         this.title = getString(R.string.activity_title_set_owner)
+
+        updateCount()
 
         binding.closeActivityBtn.setOnClickListener {
             clearInputFields()
@@ -65,5 +69,12 @@ class SetOwnerActivity : AppCompatActivity() {
     fun clearInputFields() {
         binding.inputOwnerFirstName.text.clear()
         binding.inputOwnerLastName.text.clear()
+    }
+
+    private fun updateCount() {
+        val keyword: String = getString(R.string.label_analytics_activity_set_owner)
+        val count = app.sharedPref.getInt(keyword,0) + 1
+        app.editor.putInt(keyword, count)
+        app.editor.apply()
     }
 }

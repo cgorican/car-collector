@@ -21,6 +21,16 @@ class AboutActivity : AppCompatActivity() {
 
         this.title = getString(R.string.activity_title_about)
 
+        updateCount()
+
+        // Display UUID
         binding.appSessionUUIDView.text = app.sharedPref.getString(getString(R.string.noun_uuid),"")
+    }
+
+    private fun updateCount() {
+        val keyword: String = getString(R.string.label_analytics_activity_about)
+        val count = app.sharedPref.getInt(keyword,0) + 1
+        app.editor.putInt(keyword, count)
+        app.editor.apply()
     }
 }

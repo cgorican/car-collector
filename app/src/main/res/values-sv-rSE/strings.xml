@@ -55,4 +55,7 @@
     </string-array>
     <string name="desc_spinner_view_type">Visningsläge</string>
     <string name="label_notifications">Aviseringar</string>
+    <string name="sub_title_analytics">Efter aktiviteter</string>
+    <string name="activity_title_analytics">Analytics</string>
+    <string name="noun_analytics">Analytics</string>
 </resources>

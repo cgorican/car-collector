@@ -29,6 +29,8 @@ class SettingsActivity : AppCompatActivity() {
             app.editor.apply()
         }
 
+        updateCount()
+
         // Spinner setup
         setupViewTypeSpinner()
 
@@ -74,5 +76,12 @@ class SettingsActivity : AppCompatActivity() {
                 app.editor.apply()
             }
         }
+    }
+
+    private fun updateCount() {
+        val keyword: String = getString(R.string.label_analytics_activity_settings)
+        val count = app.sharedPref.getInt(keyword,0) + 1
+        app.editor.putInt(keyword, count)
+        app.editor.apply()
     }
 }

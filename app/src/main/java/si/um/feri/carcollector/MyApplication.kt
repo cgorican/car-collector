@@ -4,36 +4,53 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import si.um.feri.carcollection.CarCollection
 import java.io.File
 import java.io.FileReader
 import java.util.*
 
-class MyApplication: Application() {
-    val id: UUID = UUID.randomUUID()
+class MyApplication: Application(), DefaultLifecycleObserver {
     private val TAG = MyApplication::class.qualifiedName
+    private lateinit var gson: Gson
+    private lateinit var file: File
+
     lateinit var data: CarCollection
     lateinit var sharedPref: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
 
+    val id: UUID = UUID.randomUUID()
+
     override fun onCreate() {
-        super.onCreate()
+        super<Application>.onCreate()
+        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
+
         //data/data/si.um.feri.carcollector/shared_prefs
         sharedPref = getSharedPreferences(getString(R.string.path_shared_pref), Context.MODE_PRIVATE)
         editor = sharedPref.edit()
         addSessionIdToSharedPref()
         data = CarCollection.generate(20)
+
+        gson = Gson()
+        file = File(getString(R.string.path_saved_data_file))
+
+        updateCount()
+    }
+
+    private fun updateCount() {
+        val keyword: String = getString(R.string.label_analytics_launches)
+        val count = sharedPref.getInt(keyword,0) + 1
+        editor.putInt(keyword, count)
+        editor.apply()
     }
 
     private fun addSessionIdToSharedPref() {
         editor.putString(getString(R.string.noun_uuid),id.toString())
         editor.apply()
-    }
-
-    private fun writeToFile(jsonString: String, path: String = getString(R.string.path_saved_data_file)) {
-        val file = File(getString(R.string.path_saved_data_file))
-        file.writeText(jsonString)
     }
 
     private fun serialize(value: Any): String? {
@@ -48,9 +65,8 @@ class MyApplication: Application() {
         return jsonString
     }
 
-    private fun deserialize(path: String = getString(R.string.path_saved_data_file)): CarCollection? {
-        val gson = GsonBuilder().create()
-        val fileReader = FileReader(path)
+    private fun deserialize(): CarCollection? {
+        val fileReader = FileReader(file)
         var carCollection: CarCollection? = null
         try {
             carCollection = gson.fromJson(fileReader, CarCollection::class.java)
@@ -65,12 +81,20 @@ class MyApplication: Application() {
     fun save() {
         val jsonString: String? = serialize(data)
         if(jsonString != null) {
-            writeToFile(jsonString)
+            file.writeText(jsonString)
         }
     }
 
     fun read() {
         val fileData: CarCollection? = deserialize()
         if(fileData != null) data = fileData
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        super.onPause(owner)
+        val keyword: String = getString(R.string.label_analytics_sent_to_background)
+        val count = sharedPref.getInt(keyword,0) + 1
+        editor.putInt(keyword, count)
+        editor.apply()
     }
 }

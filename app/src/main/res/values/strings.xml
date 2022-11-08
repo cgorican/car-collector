@@ -5,7 +5,7 @@
     <string name="app_version" translatable="false">1.0</string>
 
     <string name="logo_alt_text">App logo</string>
-    <string name="path_saved_data_file" translatable="false">./car_collector_data</string>
+    <string name="path_saved_data_file" translatable="false">car_collector_data</string>
 
     <!-- AboutActivity -->
     <string name="label_app_name">App name</string>
@@ -83,4 +83,15 @@
     </string-array>
     <string name="desc_spinner_view_type">Select view type</string>
     <string name="label_notifications">Notifications</string>
+    <string name="label_analytics_launches" translatable="false">Launches</string>
+    <string name="label_analytics_sent_to_background" translatable="false">Sent to background</string>
+    <string name="label_analytics_activity_about" translatable="false">About</string>
+    <string name="label_analytics_activity_analytics" translatable="false">Analytics</string>
+    <string name="label_analytics_activity_car_input" translatable="false">Car input</string>
+    <string name="label_analytics_activity_main" translatable="false">Main</string>
+    <string name="label_analytics_activity_set_owner" translatable="false">Set owner</string>
+    <string name="label_analytics_activity_settings" translatable="false">Settings</string>
+    <string name="sub_title_analytics">By activities</string>
+    <string name="activity_title_analytics">Analytics</string>
+    <string name="noun_analytics">Analytics</string>
 </resources>

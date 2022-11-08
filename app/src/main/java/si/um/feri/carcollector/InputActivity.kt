@@ -1,5 +1,6 @@
 package si.um.feri.carcollector
 
+import android.app.ActivityManager.RunningAppProcessInfo
 import android.content.Intent
 import android.os.*
 import android.util.Log
@@ -20,9 +21,11 @@ class InputActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputBinding
     private val TAG = InputActivity::class.qualifiedName
     private lateinit var vibrator: Vibrator
+    private lateinit var app: MyApplication
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        app = application as MyApplication
         setContentView(R.layout.activity_input)
 
         binding = ActivityInputBinding.inflate(layoutInflater)
@@ -32,6 +35,7 @@ class InputActivity : AppCompatActivity() {
 
         setVibrator()
 
+        updateCount()
 
         val getQECodeData = registerForActivityResult(ScanContract()) {
             result: ScanIntentResult ->
@@ -158,5 +162,12 @@ class InputActivity : AppCompatActivity() {
         if(!vibrator.hasVibrator()) {
             Log.i(TAG, "Device does not have a vibrator!")
         }
+    }
+
+    private fun updateCount() {
+        val keyword: String = getString(R.string.label_analytics_activity_car_input)
+        val count = app.sharedPref.getInt(keyword,0) + 1
+        app.editor.putInt(keyword, count)
+        app.editor.apply()
     }
 }

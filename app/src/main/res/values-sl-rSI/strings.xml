@@ -55,4 +55,7 @@
     </string-array>
     <string name="desc_spinner_view_type">Izbira pogleda</string>
     <string name="label_notifications">Obvestila</string>
+    <string name="sub_title_analytics">Po dejavnostih</string>
+    <string name="activity_title_analytics">Analitika</string>
+    <string name="noun_analytics">Analitika</string>
 </resources>

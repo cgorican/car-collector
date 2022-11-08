@@ -15,17 +15,18 @@ class MyApplication: Application() {
     private val TAG = MyApplication::class.qualifiedName
     lateinit var data: CarCollection
     lateinit var sharedPref: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate() {
         super.onCreate()
         //data/data/si.um.feri.carcollector/shared_prefs
         sharedPref = getSharedPreferences(getString(R.string.path_shared_pref), Context.MODE_PRIVATE)
+        editor = sharedPref.edit()
         addSessionIdToSharedPref()
         data = CarCollection.generate(20)
     }
 
     private fun addSessionIdToSharedPref() {
-        val editor: SharedPreferences.Editor = sharedPref.edit()
         editor.putString(getString(R.string.noun_uuid),id.toString())
         editor.apply()
     }

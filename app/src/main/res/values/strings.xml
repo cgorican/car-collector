@@ -74,4 +74,13 @@
     <string name="label_uuid" translatable="false">UUID</string>
     <string name="noun_uuid" translatable="false">UUID</string>
     <string name="path_shared_pref" translatable="false">ShrPref</string>
+    <string name="shared_pref_view_type" translatable="false">ViewType</string>
+    <string name="shared_pref_notifications" translatable="false">Notifications</string>
+    <string name="label_view_type">View</string>
+    <string-array name="view_types">
+        <item>List</item>
+        <item>Grid</item>
+    </string-array>
+    <string name="desc_spinner_view_type">Select view type</string>
+    <string name="label_notifications">Notifications</string>
 </resources>

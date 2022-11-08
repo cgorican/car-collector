@@ -48,4 +48,11 @@
     <string name="error_invalid_qr_code">Ogiltig QR-kod!</string>
     <string name="activity_title_settings">Inställningar</string>
     <string name="settings">Inställningar</string>
+    <string name="label_view_type">Visningsläge</string>
+    <string-array name="view_types">
+        <item>Lista</item>
+        <item>Rutnät</item>
+    </string-array>
+    <string name="desc_spinner_view_type">Visningsläge</string>
+    <string name="label_notifications">Aviseringar</string>
 </resources>

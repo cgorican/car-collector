@@ -48,4 +48,11 @@
     <string name="error_empty_fields_all">Izpolnite polja!</string>
     <string name="activity_title_settings">Nastavitve</string>
     <string name="settings">Nastavitve</string>
+    <string name="label_view_type">Pogled</string>
+    <string-array name="view_types">
+        <item>Seznam</item>
+        <item>Mreža</item>
+    </string-array>
+    <string name="desc_spinner_view_type">Izbira pogleda</string>
+    <string name="label_notifications">Obvestila</string>
 </resources>

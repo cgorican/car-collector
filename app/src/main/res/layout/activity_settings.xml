@@ -7,30 +7,26 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
+        android:text="@string/label_view_type"
+        android:autoSizeTextType="uniform"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_label"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/guideline17"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline17"
@@ -46,25 +42,37 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
+    <Spinner
+        android:id="@+id/spinner_view_type"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
+        android:textSize="@dimen/text_size_value"
+        android:layout_marginBottom="@dimen/margin_left_right"
+        android:contentDescription="@string/desc_spinner_view_type"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Switch
-        android:id="@+id/switch2"
-        android:layout_width="wrap_content"
+        android:id="@+id/switch_notifications"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/poppins_regular"
+        android:maxHeight="@dimen/text_size_label"
+        android:text="@string/label_notifications"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_label"
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

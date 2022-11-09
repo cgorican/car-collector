@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -22,12 +22,12 @@
 
     <Button
         android:id="@+id/btnToInputActivity"
-        android:layout_height="@dimen/btn_height"
         android:layout_width="@dimen/btn_width_square"
-        android:background = "@drawable/circle_shape"
-        android:textSize="@dimen/text_size_btn"
-        android:fontFamily="@font/poppins_semi_bold"
+        android:layout_height="@dimen/btn_height"
+        android:background="@drawable/circle_shape"
         android:contentDescription="@string/desc_btn_add_car"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textSize="@dimen/text_size_btn"
         app:icon="@drawable/plus_solid"
         app:iconGravity="textStart"
         app:iconPadding="@dimen/padding_none"
@@ -36,24 +36,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnToAboutActivity"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
         android:id="@+id/setOwnerBtn"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_height"
-        android:backgroundTint="@color/secondary_light"
-        android:textColor="@color/gray"
-        android:text="@string/btn_to_set_owner_activity"
-        android:textSize="@dimen/text_size_btn"
+        android:backgroundTint="@color/gray_light"
         android:fontFamily="@font/poppins_semi_bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnToAboutActivity"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:text="@string/btn_to_set_owner_activity"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_btn"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -62,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_left_right"
         android:layout_marginEnd="@dimen/margin_left_right"
-        android:textSize="@dimen/text_size_value"
         android:fontFamily="@font/poppins_regular"
+        android:textSize="@dimen/text_size_value"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,9 +72,9 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_height"
         android:backgroundTint="@color/secondary_light"
-        android:textSize="@dimen/text_size_btn"
-        android:fontFamily="@font/poppins_semi_bold"
         android:contentDescription="@string/desc_btn_about"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textSize="@dimen/text_size_btn"
         app:icon="@drawable/address_card_solid"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
@@ -84,19 +82,19 @@
         app:iconTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnToInputActivity"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/setOwnerBtn"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:ignore="TextContrastCheck" />
 
-    <TextView
-        android:id="@+id/carCountDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Hi, developer!"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCars"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/card_view_design" />
 </androidx.constraintlayout.widget.ConstraintLayout>

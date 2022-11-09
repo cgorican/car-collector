@@ -19,6 +19,9 @@
 
     <!-- Margin -->
     <dimen name="margin_left_right">20dp</dimen>
+    <dimen name="margin_left_right5">5dp</dimen>
+
+    <dimen name="margin_up_down">10dp</dimen>
 
     <!-- Padding -->
     <dimen name="padding_none">0dp</dimen>

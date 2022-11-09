@@ -33,10 +33,17 @@ class MyApplication: Application(), DefaultLifecycleObserver {
         sharedPref = getSharedPreferences(getString(R.string.path_shared_pref), Context.MODE_PRIVATE)
         editor = sharedPref.edit()
         addSessionIdToSharedPref()
-        data = CarCollection.generate(20)
+        data = CarCollection.generate(100)
 
         gson = Gson()
-        file = File(getString(R.string.path_saved_data_file))
+        //data/data/si.um.feri.carcollector/files
+        file = File(filesDir, getString(R.string.path_saved_data_file))
+        if(file.exists()) {
+            readFromFile()
+        }
+        else {
+            saveToFile()
+        }
 
         updateCount()
     }
@@ -66,11 +73,11 @@ class MyApplication: Application(), DefaultLifecycleObserver {
     }
 
     private fun deserialize(): CarCollection? {
+        if(!file.exists()) return null
         val fileReader = FileReader(file)
         var carCollection: CarCollection? = null
         try {
             carCollection = gson.fromJson(fileReader, CarCollection::class.java)
-
         }
         catch(e: Exception) {
             Log.e(TAG, "Deserialization failed")
@@ -78,14 +85,14 @@ class MyApplication: Application(), DefaultLifecycleObserver {
         return carCollection
     }
 
-    fun save() {
+    fun saveToFile() {
         val jsonString: String? = serialize(data)
         if(jsonString != null) {
             file.writeText(jsonString)
         }
     }
 
-    fun read() {
+    fun readFromFile() {
         val fileData: CarCollection? = deserialize()
         if(fileData != null) data = fileData
     }

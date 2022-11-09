@@ -6,9 +6,9 @@ import java.time.Year
 import java.util.*
 
 class Car(
-    val make: String,       // Porsche
-    val model: String,      // 964 Turbo
-    val year: Int,         // 1990
+    var make: String,       // Porsche
+    var model: String,      // 964 Turbo
+    var year: Int,         // 1990
 
     var power: UInt,        // 360 hp
     var mileage: UInt,      // 43.812 km
@@ -49,9 +49,9 @@ class Car(
             model,
             year)
 
-        result += String.format("\n%-10s %-10d hp", "Power:", power.toInt())
-        result += String.format("\n%-10s %-10d km", "Mileage:", mileage.toInt())
-        result += String.format("\n%-10s %-8.2f €", "Price:", price.setScale(2).toDouble())
+        result += String.format("\n%-12s %10d hp", "Power:", power.toInt())
+        result += String.format("\n%-12s %10d km", "Mileage:", mileage.toInt())
+        result += String.format("\n%-12s %8.2f €", "Price:", price.setScale(2).toDouble())
 
         return result
     }

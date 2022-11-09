@@ -58,4 +58,7 @@
     <string name="sub_title_analytics">Efter aktiviteter</string>
     <string name="activity_title_analytics">Analytics</string>
     <string name="noun_analytics">Analytics</string>
+    <string name="noun_update">Uppdatera</string>
+    <string name="noun_cancel">Avbryt</string>
+    <string name="noun_delete">Radera</string>
 </resources>

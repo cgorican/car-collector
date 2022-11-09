@@ -56,4 +56,31 @@ class CarCollection(
             println("${car}\n")
         }
     }
+
+    fun addCar(car: Car): Int {
+        cars.add(car)
+        order()
+        return cars.indexOfFirst { it.id == car.id }
+    }
+
+    fun updateCar(car: Car): Int {
+        val index = cars.indexOfFirst { it.id == car.id }
+        if(index != -1) {
+            cars[index].make = car.make
+            cars[index].model = car.model
+            cars[index].year = car.year
+            cars[index].power = car.power
+            cars[index].mileage = car.mileage
+            cars[index].price = car.price
+            order()
+            return cars.indexOfFirst { it.id == car.id }
+        }
+        return addCar(car)
+    }
+
+    fun removeCar(id: UUID): Int {
+        val index = cars.indexOfFirst { it.id == id }
+        cars.removeAt(index)
+        return index
+    }
 }

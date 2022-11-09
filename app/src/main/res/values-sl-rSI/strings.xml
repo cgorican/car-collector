@@ -58,4 +58,7 @@
     <string name="sub_title_analytics">Po dejavnostih</string>
     <string name="activity_title_analytics">Analitika</string>
     <string name="noun_analytics">Analitika</string>
+    <string name="noun_update">Posodobi</string>
+    <string name="noun_delete">Izbriši</string>
+    <string name="noun_cancel">Prekliči</string>
 </resources>

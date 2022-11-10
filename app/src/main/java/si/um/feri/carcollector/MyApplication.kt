@@ -96,7 +96,7 @@ class MyApplication: Application(), DefaultLifecycleObserver {
     }
 
     private fun handleDarkModeSettings() {
-        when(sharedPref.getBoolean(getString(R.string.shared_pref_notifications), false)) {
+        when(sharedPref.getBoolean(getString(R.string.shared_pref_dark_mode), false)) {
             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }

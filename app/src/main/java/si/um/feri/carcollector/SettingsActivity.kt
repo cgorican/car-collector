@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
+import androidx.appcompat.app.AppCompatDelegate
 import si.um.feri.carcollector.databinding.ActivitySettingsBinding
 import si.um.feri.carcollector.enums.ViewTypeEnum
 
@@ -29,6 +30,15 @@ class SettingsActivity : AppCompatActivity() {
             app.editor.apply()
         }
 
+        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            app.editor.putBoolean(getString(R.string.shared_pref_dark_mode), isChecked)
+            app.editor.apply()
+            when(isChecked) {
+                true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
         updateCount()
 
         // Spinner setup
@@ -39,6 +49,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun applySharedPref() {
+        val darkMode = app.sharedPref.getBoolean(getString(R.string.shared_pref_dark_mode), false)
         val notifications = app.sharedPref.getBoolean(getString(R.string.shared_pref_notifications), true)
         val viewTypeValue = app.sharedPref.getInt(getString(R.string.shared_pref_view_type), ViewTypeEnum.LIST.value)
         val viewType: ViewTypeEnum = when(viewTypeValue) {
@@ -46,6 +57,7 @@ class SettingsActivity : AppCompatActivity() {
             else -> ViewTypeEnum.LIST
         }
 
+        binding.switchDarkMode.isChecked = darkMode
         binding.switchNotifications.isChecked = notifications
         binding.spinnerViewType.setSelection(viewType.value)
     }

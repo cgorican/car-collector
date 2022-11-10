@@ -13,7 +13,6 @@
         android:layout_marginEnd="@dimen/margin_left_right"
         android:text="@string/label_view_type"
         android:autoSizeTextType="uniform"
-        android:textColor="@color/gray"
         android:textSize="@dimen/text_size_label"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
@@ -34,6 +33,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
@@ -69,12 +75,28 @@
         android:fontFamily="@font/poppins_regular"
         android:maxHeight="@dimen/text_size_label"
         android:text="@string/label_notifications"
-        android:textColor="@color/gray"
         android:textSize="@dimen/text_size_label"
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline18"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Switch
+        android:id="@+id/switch_dark_mode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_right"
+        android:layout_marginEnd="@dimen/margin_left_right"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/poppins_regular"
+        android:maxHeight="@dimen/text_size_label"
+        android:text="@string/label_dark_mode"
+        android:textSize="@dimen/text_size_label"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline17"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

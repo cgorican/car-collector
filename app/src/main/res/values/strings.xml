@@ -97,4 +97,6 @@
     <string name="noun_update">Update</string>
     <string name="noun_delete">Delete</string>
     <string name="noun_cancel">Cancel</string>
+    <string name="shared_pref_dark_mode" translatable="false">DarkMode</string>
+    <string name="label_dark_mode">Dark mode</string>
 </resources>

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
@@ -44,6 +45,8 @@ class MyApplication: Application(), DefaultLifecycleObserver {
         else {
             saveToFile()
         }
+
+        handleDarkModeSettings()
 
         updateCount()
     }
@@ -92,9 +95,21 @@ class MyApplication: Application(), DefaultLifecycleObserver {
         }
     }
 
+    private fun handleDarkModeSettings() {
+        when(sharedPref.getBoolean(getString(R.string.shared_pref_notifications), false)) {
+            true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
     fun readFromFile() {
         val fileData: CarCollection? = deserialize()
         if(fileData != null) data = fileData
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        handleDarkModeSettings()
     }
 
     override fun onPause(owner: LifecycleOwner) {

@@ -61,4 +61,5 @@
     <string name="noun_update">Posodobi</string>
     <string name="noun_delete">Izbriši</string>
     <string name="noun_cancel">Prekliči</string>
+    <string name="label_dark_mode">Temni način</string>
 </resources>

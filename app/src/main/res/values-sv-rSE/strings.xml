@@ -61,4 +61,5 @@
     <string name="noun_update">Uppdatera</string>
     <string name="noun_cancel">Avbryt</string>
     <string name="noun_delete">Radera</string>
+    <string name="label_dark_mode">Mörkt läge</string>
 </resources>

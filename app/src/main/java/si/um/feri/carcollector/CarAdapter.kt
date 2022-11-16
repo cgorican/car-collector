@@ -77,6 +77,7 @@ class CarAdapter(
             .placeholder(R.drawable.car_solid)
             .error(R.drawable.car_solid)
             .fit() // fit image into imageView
+            .centerInside()
             .noFade() // disable fade animation
             .into(holder.image)
     }

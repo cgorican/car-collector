@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import si.um.feri.carcollection.Car
 
 class CarAdapter(
@@ -69,6 +70,15 @@ class CarAdapter(
         holder.power.text = String.format("%d hp", itemsViewModel.power.toInt())
         holder.mileage.text = String.format("%d km", itemsViewModel.mileage.toInt())
         holder.price.text = String.format("%.0f €", itemsViewModel.price.toFloat())
+        //holder.image.setImageResource(R.drawable.car_solid)
+
+        Picasso.get()
+            .load("https://www.carlogos.org/car-logos/${itemsViewModel.make.lowercase()}-logo.png")
+            .placeholder(R.drawable.car_solid)
+            .error(R.drawable.car_solid)
+            .fit() // fit image into imageView
+            .noFade() // disable fade animation
+            .into(holder.image)
     }
 
     override fun getItemCount() = data.size

@@ -6,5 +6,5 @@ It allows you to add pictures of your cars so you can easily show your collectio
 
 ## Technologies
 - Kotlin
-- Android
+- Android (12)
 - Picasso
